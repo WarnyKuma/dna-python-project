@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}DNA Tool | Home{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">DNA Utility Web App</h2>
+<form method="POST">
+    <div class="form-group">
+        <label for="sequence">DNA Sequence:</label>
+        <textarea name="sequence" id="sequence" class="form-control" rows="3" placeholder="Enter DNA sequence..."></textarea>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="start">Start Index (Crop):</label>
+            <input type="number" class="form-control" id="start" name="start" value="0">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="end">End Index:</label>
+            <input type="number" class="form-control" id="end" name="end">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="pattern">Pattern to Find:</label>
+        <input type="text" class="form-control" id="pattern" name="pattern" placeholder="e.g. ATG">
+    </div>
+
+    <div class="form-group">
+        <label for="sample_sequence">Sample Sequence (for mutation detection):</label>
+        <textarea name="sample_sequence" id="sample_sequence" class="form-control" rows="3" placeholder="Enter sample sequence..."></textarea>
+    </div>
+
+    <div class="btn-group mb-4" role="group">
+        <button type="submit" name="action" value="translate" class="btn btn-info">Translate to Protein</button>
+        <button type="submit" name="action" value="crop" class="btn btn-secondary">Crop</button>
+        <button type="submit" name="action" value="pattern" class="btn btn-warning">Find Pattern</button>
+        <button type="submit" name="action" value="mutations" class="btn btn-danger">Detect Mutations</button>
+    </div>
+</form>
+
+{% if result %}
+    <h4 class="mt-4">Result:</h4>
+    <pre class="bg-dark text-white p-3 rounded">{{ result }}</pre>
+{% endif %}
+{% endblock %}
