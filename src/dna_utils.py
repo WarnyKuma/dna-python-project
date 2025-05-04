@@ -32,8 +32,34 @@ def crop_sequence(seq: str, start: int, end: int) -> str:
     Returns:
     str: Cropped DNA sequence.
     """
-    if str != '':
-        return seq[start:end]
+    return seq[start:end]
+
+
+def reverse_sequence(seq: str) -> str:
+    """
+    Reverses the input DNA sequence.
+
+    Args:
+        seq (str): DNA sequence (string of A, T, C, G)
+
+    Returns:
+        str: Reversed DNA sequence
+    """
+    return seq[::-1]
+
+
+def reverse_complement(seq: str) -> str:
+    """
+    Returns the reverse complement of a DNA sequence.
+
+    Args:
+        seq (str): DNA sequence (A, T, C, G)
+
+    Returns:
+        str: Reverse complement of the sequence
+    """
+    complement = {'A': 'T', 'T': 'A', 'C': 'G', 'G': 'C'}
+    return ''.join(complement.get(base, base) for base in reverse_sequence(seq.upper()))
 
 
 def find_pattern(seq: str, pattern: str) -> list:
